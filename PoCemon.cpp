@@ -136,20 +136,20 @@ void Pocemon::doDamage(const Type &typeATK, const int &power, Pocemon *pocemon1,
 		cout << "Saving data..." << endl;
 		ofstream input;
 		myfile.open("DATA.txt");
-		input << "DATA FOR" << pocemon1->getBasicAttribute(id) << endl;
+		input << "DATA FOR" << pocemon1->Pocemon::getBasicAttribute(id) << endl;
 		input << "Statistics before the fight#" << battleCOUNT << ":::" << endl << endl;
 		input << "current HP:" << endl;
-		input << to_string(pocemon1->getCurrentStat(hpCur));
+		input << to_string(pocemon1->Pocemon::getCurrentStat(hpCur));
 		input << "current attack:" << endl;
-		input << to_string(pocemon1->getCurrentStat(attackCur));
+		input << to_string(pocemon1->Pocemon::getCurrentStat(attackCur));
 		input << "current defense:" << endl;
-		input << to_string(pocemon1->getCurrentStat(defenseCur));
+		input << to_string(pocemon1->Pocemon::getCurrentStat(defenseCur));
 		input << "current speed:" << endl;
-		input << to_string(pocemon1->getCurrentStat(speedCur));
+		input << to_string(pocemon1->Pocemon::getCurrentStat(speedCur));
 		input << "current special attack:" << endl;
-		input << to_string(pocemon1->getCurrentStat(spAttackCur));
+		input << to_string(pocemon1->Pocemon::getCurrentStat(spAttackCur));
 		input << "current special defense:" << endl;
-		input << to_string(pocemon1->getCurrentStat(spDefCur));
+		input << to_string(pocemon1->Pocemon::getCurrentStat(spDefCur));
 	
 		
 		//random factor: if it is odd, the value is rounded down; if it is even, the value is rounded up
@@ -211,10 +211,10 @@ void Pocemon::doDamage(const Type &typeATK, const int &power, Pocemon *pocemon1,
             typeATK == Ghost ||
             typeATK == Poison ||
             typeATK == Steel) {
-	               int spDefCur = pocemon1->getCurrentStat(attackCur) - damage;
-			pocemon1->setCurrentStat(attackCur, newattackCur);
-			int spDefCur = pocemon1->getCurrentStat(defenseCur) - damage;
-			pocemon1->setCurrentStat(defenseCur, newdefenseCur);
+	               int spDefCur = pocemon1->Pocemon::getCurrentStat(attackCur) - damage;
+			pocemon1->Pocemon::setCurrentStat(attackCur, newattackCur);
+			int spDefCur = pocemon1->Pocemon::getCurrentStat(defenseCur) - damage;
+			pocemon1->Pocemon::setCurrentStat(defenseCur, newdefenseCur);
 			}
 			if (typeATK == Water ||
                 typeATK == Grass ||
@@ -224,31 +224,31 @@ void Pocemon::doDamage(const Type &typeATK, const int &power, Pocemon *pocemon1,
                 typeATK == Psychic ||
 		typeATK == Dragon ||
                 typeATK == Dark) {
-		                int newspAttackCur = pocemon1->getCurrentStat(spAttackCur) - damage;
-				pocemon1->setCurrentStat(spAttackCur, newspAttackCur);
-				int spDefCur = pocemon1->getCurrentStat(spDefCur) - damage;
-				pocemon1->setCurrentStat(spDefCur, newspDefCur);
+		                int newspAttackCur = pocemon1->Pocemon::getCurrentStat(spAttackCur) - damage;
+				pocemon1->Pocemon::setCurrentStat(spAttackCur, newspAttackCur);
+				int spDefCur = pocemon1->Pocemon::getCurrentStat(spDefCur) - damage;
+				pocemon1->Pocemon::setCurrentStat(spDefCur, newspDefCur);
 				}
 		*/
-	        int newhpCur = pocemon1->getCurrentStat(hpCur) - damage;
-		pocemon1->setCurrentStat(hpCur, newhpCur);
+	        int newhpCur = pocemon1->Pocemon::getCurrentStat(hpCur) - damage;
+		pocemon1->Pocemon::setCurrentStat(hpCur, newhpCur);
 	
 	
                 cout << "Saving data..." << endl;
-		input << "DATA FOR" << pocemon1->getBasicAttribute(id) << endl;
+		input << "DATA FOR" << pocemon1->Pocemon::getBasicAttribute(id) << endl;
 		input << "Statistics after the fight#" << battleCOUNT << ":::" << endl << endl;
 		input << "current HP:" << endl;
-		input << to_string(pocemon1->getCurrentStat(hpCur));
+		input << to_string(pocemon1->Pocemon::getCurrentStat(hpCur));
 		input << "current attack:" << endl;
-		input << to_string(pocemon1->getCurrentStat(attackCur));
+		input << to_string(pocemon1->Pocemon::getCurrentStat(attackCur));
 		input << "current defense:" << endl;
-		input << to_string(pocemon1->getCurrentStat(defenseCur));
+		input << to_string(pocemon1->Pocemon::getCurrentStat(defenseCur));
 		input << "current speed:" << endl;
-		input << to_string(pocemon1->getCurrentStat(speedCur));
+		input << to_string(pocemon1->Pocemon::getCurrentStat(speedCur));
 		input << "current special attack:" << endl;
-		input << to_string(pocemon1->getCurrentStat(spAttackCur));
+		input << to_string(pocemon1->Pocemon::getCurrentStat(spAttackCur));
 		input << "current special defense:" << endl;
-		input << to_string(pocemon1->getCurrentStat(spDefCur));
+		input << to_string(pocemon1->Pocemon::getCurrentStat(spDefCur));
 
 		battleCOUNT++; 
 	}
