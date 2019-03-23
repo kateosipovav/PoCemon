@@ -3,7 +3,15 @@
 #include "PoCemonData.h"
 #include "Enums.h"
 #include <cmath>
-
+#include <iostream>
+#include <PoCemon.h>
+#include <Combat.h>
+#include <Enums.h>
+#include <PoCemonData.h>
+#include <corecrt_math.h>
+#include <cstdlib>
+#include <fstream>
+#include <string>
 
 template <class BasicAttributeReturn>
 BasicAttributeReturn Pocemon::getBasicAttribute(BasicAttribute type) const	{
