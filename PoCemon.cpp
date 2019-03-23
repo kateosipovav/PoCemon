@@ -126,3 +126,130 @@ int Pocemon::calculateStat(const int &lvl,
     stat += (lvl * (2 * (baseStat + ivStat) + (sqrt(evStat) / 4))) / 100;
     return stat;
 }
+//////////////////////////////////////////////////////////////////////////
+//global variable count, to count the battle number
+	int battleCOUNT = 1; 
+//////////////////////////////////////////////////////////////////////////
+void Pocemon::doDamage(const Type &typeATK, const int &power, Pocemon *pocemon1, Pocemon *pocemon2) {
+		
+		//saving information to the file 
+		cout << "Saving data..." << endl;
+		ofstream input;
+		myfile.open("DATA.txt");
+		input << "DATA FOR" << pocemon1->getBasicAttribute(id) << endl;
+		input << "Statistics before the fight#" << battleCOUNT << ":::" << endl << endl;
+		input << "current HP:" << endl;
+		input << to_string(pocemon1->getCurrentStat(hpCur));
+		input << "current attack:" << endl;
+		input << to_string(pocemon1->getCurrentStat(attackCur));
+		input << "current defense:" << endl;
+		input << to_string(pocemon1->getCurrentStat(defenseCur));
+		input << "current speed:" << endl;
+		input << to_string(pocemon1->getCurrentStat(speedCur));
+		input << "current special attack:" << endl;
+		input << to_string(pocemon1->getCurrentStat(spAttackCur));
+		input << "current special defense:" << endl;
+		input << to_string(pocemon1->getCurrentStat(spDefCur));
+	
+		
+		//random factor: if it is odd, the value is rounded down; if it is even, the value is rounded up
+		int randomint = rand() % 10000;
+
+		//calculating damage for pocemon1
+		modifier = Combat::getDmgMultiplier(typeATK, (pocemon2->Pocemon::getBasicAttribute(type1)), (pocemon2->Pocemon::getBasicAttribute()));  //there is no argument for the second getter, right? 
+		if (randomint % 2 == 0) {
+			int damage = floor(((((2 + (2 * (pocemon2->Pocemon::getBasicAttribute(level)) / 5))* power * ((pocemon2->Pocemon::getCurrentStat(attackCur)) / pocemon2->Pocemon::getCurrentStat())) / 50) + 2)*modifier); // no argument for the last fucntion as well, right? 
+		}
+		else {
+			int damage = ceil(((((2 + (2 * (pocemon2->Pocemon::getBasicAttribute(level)) / 5))* power * ((pocemon2->Pocemon::getCurrentStat(attackCur)) / pocemon2->Pocemon::getCurrentStat())) / 50) + 2)*modifier); // no argument for the last fucntion as well, right? 
+		}
+	        //doing damage to pocemon1
+		/*first - figure out what type of the attack it is, them do damage to a specefic zone */
+		/*
+		PHYSICAL (for the attack and defense)
+         Normal
+         Fighting
+         Flying
+	 Ground
+         Rock
+         Bug
+         Ghost
+         Poison
+         Steel
+		SPECIAL (for special attack and defence)
+         Water
+         Grass
+         Fire
+         Ice
+         Electric
+         Psychic
+	 Dragon
+         Dark
+		 HP drain, could not find the moves on the list
+	Absorb
+	Bouncy Bubble
+	Drain Punch
+	Draining Kiss
+	Dream Eater
+	Giga Drain
+	Horn Leech
+	Leech Life
+	Leech Seed
+	Mega Drain
+	Oblivion Wing
+	Parabolic Charge
+		*/
+		//could not find the moves/attacks for speed, so I wrote in two ways: first one - does demage to all the current 
+		// stats of the pokemon, except health and speed; another one - does demage ONLY to health of the pokemon.  
+		/*
+		if (typeATK == Normal || 
+            typeATK == Fighting || 
+            typeATK == Flying ||
+            typeATK == Ground ||
+            typeATK == Rock ||
+            typeATK == Bug ||
+            typeATK == Ghost ||
+            typeATK == Poison ||
+            typeATK == Steel) {
+	               int spDefCur = pocemon1->getCurrentStat(attackCur) - damage;
+			pocemon1->setCurrentStat(attackCur, newattackCur);
+			int spDefCur = pocemon1->getCurrentStat(defenseCur) - damage;
+			pocemon1->setCurrentStat(defenseCur, newdefenseCur);
+			}
+			if (typeATK == Water ||
+                typeATK == Grass ||
+                typeATK == Fire ||
+                typeATK == Ice ||
+	        typeATK == Electric ||
+                typeATK == Psychic ||
+		typeATK == Dragon ||
+                typeATK == Dark) {
+		                int newspAttackCur = pocemon1->getCurrentStat(spAttackCur) - damage;
+				pocemon1->setCurrentStat(spAttackCur, newspAttackCur);
+				int spDefCur = pocemon1->getCurrentStat(spDefCur) - damage;
+				pocemon1->setCurrentStat(spDefCur, newspDefCur);
+				}
+		*/
+	        int newhpCur = pocemon1->getCurrentStat(hpCur) - damage;
+		pocemon1->setCurrentStat(hpCur, newhpCur);
+	
+	
+                cout << "Saving data..." << endl;
+		input << "DATA FOR" << pocemon1->getBasicAttribute(id) << endl;
+		input << "Statistics after the fight#" << battleCOUNT << ":::" << endl << endl;
+		input << "current HP:" << endl;
+		input << to_string(pocemon1->getCurrentStat(hpCur));
+		input << "current attack:" << endl;
+		input << to_string(pocemon1->getCurrentStat(attackCur));
+		input << "current defense:" << endl;
+		input << to_string(pocemon1->getCurrentStat(defenseCur));
+		input << "current speed:" << endl;
+		input << to_string(pocemon1->getCurrentStat(speedCur));
+		input << "current special attack:" << endl;
+		input << to_string(pocemon1->getCurrentStat(spAttackCur));
+		input << "current special defense:" << endl;
+		input << to_string(pocemon1->getCurrentStat(spDefCur));
+
+		battleCOUNT++; 
+	}
+////////////////////////////////////////////////////////////////////////////////////////////////////////
