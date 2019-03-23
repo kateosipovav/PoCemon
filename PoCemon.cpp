@@ -23,7 +23,40 @@ int Pocemon::getStat(Stat type) const	{
 
 	return spDef;
 }
+//////////////////////////////////////////////////////////////
+int Pocemon::getCurrentStat(Stat type) const { 
+		//int getCurrentStat(Stat type) const; - in declaration
+		if (type == Stat::hpCur) return hpCur;
+		if (type == Stat::attackCur) return atkCur;
+		if (type == Stat::defenseCur) return defCur;
+		if (type == Stat::speedCur) return speedCur;
+		if (type == Stat::spAttackCur) return spAtkCur;
 
+		return spDefCur;
+	}
+/////////////////////////////////////////////////////////////
+void Pocemon::setCurrentStat(Stat type, int temp) const {
+		// void Pocemon::setCurrentStat(Stat type, int) const;
+		if (type == Stat::hpCur) {
+			hpCur = temp; 
+		}
+		if (type == Stat::attackCur) {
+			attackCur = temp;
+		}
+		if (type == Stat::defenseCur) {
+			defenseCur = temp;
+		}
+		if (type == Stat::speedCur) {
+			speedCur = temp;
+		}
+		if (type == Stat::spAttackCur) {
+			spAttackCur = temp;
+		}
+		if (type == Stat::spDefCur) { 
+			spAttackCur = temp;
+		}
+	}
+////////////////////////////////////////////////////////////////
 Pocemon::Pocemon(const PkmnId &selectedId, const int &lvl)
 {
     int tempId = static_cast<int>(selectedId);
@@ -57,7 +90,14 @@ Pocemon::Pocemon(const PkmnId &selectedId, const int &lvl)
     evSpeed = 0;
     evSpAtk = 0;
     evSpDef = 0;
-
+    //current stats//////////
+	int hpCur;
+	int attackCur;
+	int defenseCur;
+	int speedCur;
+	int spAttackCur;
+	int spDefCur; 
+    ////////////////////////
     hp = calculateStat(level, baseHp, ivHp, evHp, true);
     atk = calculateStat(level, baseAtk, ivAtk, evAtk);
     def = calculateStat(level, baseDef, ivDef, evDef);
