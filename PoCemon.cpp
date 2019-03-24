@@ -99,12 +99,7 @@ Pocemon::Pocemon(const PkmnId &selectedId, const int &lvl)
     evSpAtk = 0;
     evSpDef = 0;
     //current stats//////////
-	int hpCur;
-	int attackCur;
-	int defenseCur;
-	int speedCur;
-	int spAttackCur;
-	int spDefCur; 
+
     ////////////////////////
     hp = calculateStat(level, baseHp, ivHp, evHp, true);
     atk = calculateStat(level, baseAtk, ivAtk, evAtk);
