@@ -98,8 +98,13 @@ Pocemon::Pocemon(const PkmnId &selectedId, const int &lvl)
     evSpeed = 0;
     evSpAtk = 0;
     evSpDef = 0;
-    //current stats//////////
-
+    //current stats////////// planning to copy the base stats to current and then modify the data only in current until the next level
+   curHp = 0;
+   curAtk = 0;
+   curDef = 0;
+   curSpeed = 0;
+   curSpAtk = 0;
+   curSpDef = 0;
     ////////////////////////
     hp = calculateStat(level, baseHp, ivHp, evHp, true);
     atk = calculateStat(level, baseAtk, ivAtk, evAtk);
