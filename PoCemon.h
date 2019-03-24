@@ -11,7 +11,6 @@ public: //private:
     Pocemon(const PkmnId &selectedId, const int &lvl);
 
 
-
     // *******************************************************
     // *** Everything below will be private in the future: ***
     // *******************************************************
@@ -29,6 +28,7 @@ public: //private:
     BasicAttributeReturn getBasicAttribute(BasicAttribute type) const;
 
     int getStat(Stat type) const;
+    int getCurrentStat(Stat type) const;
 private:
 
     PkmnId id; // Need Getter
