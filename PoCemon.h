@@ -29,6 +29,7 @@ public: //private:
 
     int getStat(Stat type) const;
     int getCurrentStat(Stat type) const;
+    void Pocemon::setCurrentStat(Stat type, int) const;
 private:
 
     PkmnId id; // Need Getter
